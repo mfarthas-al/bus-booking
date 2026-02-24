@@ -39,7 +39,7 @@ public class BusScheduleService {
         for (int i = 1; i <= bus.getSeatCapacity(); i++) {
             Seat seat = new Seat();
             seat.setSeatNumber(i);
-            seat.setIsBooked(false);
+            seat.setStatus(SeatStatus.AVAILABLE);
             seat.setBusSchedule(savedSchedule);
             seatRepository.save(seat);
         }

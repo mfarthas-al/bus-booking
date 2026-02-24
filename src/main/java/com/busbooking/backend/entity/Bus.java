@@ -22,7 +22,12 @@ public class Bus {
     @Column(nullable = false)
     private String busType; // AC / Non-AC
 
-    @ManyToOne
-    @JoinColumn(name = "route_id", nullable = false)
-    private BusRoute route;
+    @Column(nullable = false)
+    private String routeNumber;
+
+    @Column(nullable = false)
+    private String fromCity;
+
+    @Column(nullable = false)
+    private String toCity;
 }

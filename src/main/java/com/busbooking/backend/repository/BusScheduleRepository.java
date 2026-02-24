@@ -11,6 +11,4 @@ public interface BusScheduleRepository extends JpaRepository<BusSchedule, Long> 
     // Find schedules by travel date
     List<BusSchedule> findByTravelDate(LocalDate travelDate);
 
-    // Find schedules by route ID (via bus → route)
-    List<BusSchedule> findByBusRouteId(Long routeId);
 }

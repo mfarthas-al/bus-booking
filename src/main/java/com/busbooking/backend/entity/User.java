@@ -5,21 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "bus_routes")
+@Table(name = "users")
 @Getter
 @Setter
-public class BusRoute {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String routeNumber;
+    @Column(unique = true)
+    private String username;
 
     @Column(nullable = false)
-    private String fromCity;
+    private String password;
 
     @Column(nullable = false)
-    private String toCity;
+    private String role;
 }

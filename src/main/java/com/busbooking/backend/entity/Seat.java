@@ -17,8 +17,9 @@ public class Seat {
     @Column(nullable = false)
     private Integer seatNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Boolean isBooked = false;
+    private SeatStatus status;
 
     @ManyToOne
     @JoinColumn(name = "schedule_id", nullable = false)

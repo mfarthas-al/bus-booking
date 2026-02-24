@@ -2,12 +2,13 @@ package com.busbooking.backend.controller;
 
 import com.busbooking.backend.dto.ApiResponse;
 import com.busbooking.backend.dto.BookingResponseDTO;
+import com.busbooking.backend.dto.BookingSearchResponseDTO;
 import com.busbooking.backend.entity.Booking;
 import com.busbooking.backend.repository.BookingRepository;
 import com.busbooking.backend.service.BookingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -37,5 +38,17 @@ public class BookingController {
                 "Seat booked successfully",
                 response
         );
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchBooking(
+            @RequestParam String bookingCode) {
+        try {
+            BookingSearchResponseDTO result = bookingService.findByBookingCode(bookingCode);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, "No booking found with that code", null));
+        }
     }
 }
